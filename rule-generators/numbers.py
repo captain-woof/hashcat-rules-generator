@@ -30,11 +30,12 @@ if __name__ == "__main__":
 
             for year in range(yearMin, yearMax + 1):
                 if isAppend:
-                    print("${}".format(year))
+                    print(" ".join(["${}".format(character) for character in str(year)]))
                 if isPrepend:
-                    print("^{}".format(year))
+                    print(" ".join(["^{}".format(character) for character in "".join(reversed(str(year)))]))
                 if isAppend and isPrepend:
-                    print("^{} ${}".format(year, year))
+                    print(" ".join(["^{}".format(character) for character in "".join(reversed(str(year)))]), end=" ")
+                    print(" ".join(["${}".format(character) for character in str(year)]))
 
     # Generate rules for numbers
     if numOfDigitsRange is not None:
@@ -50,9 +51,10 @@ if __name__ == "__main__":
                 for num in range(0, int("9" * numOfDigits) + 1):
                     numStr = str(num).rjust(numOfDigits, "0")
                     if isAppend:
-                        print("${}".format(numStr))
+                        print(" ".join(["${}".format(character) for character in numStr]))
                     if isPrepend:
-                        print("^{}".format(numStr))
+                        print(" ".join(["^{}".format(character) for character in "".join(reversed(numStr))]))
                     if isAppend and isPrepend:
-                        print("^{} ${}".format(numStr, numStr))
+                        print(" ".join(["^{}".format(character) for character in "".join(reversed(numStr))]), end=" ")
+                        print(" ".join(["${}".format(character) for character in numStr]))
 
